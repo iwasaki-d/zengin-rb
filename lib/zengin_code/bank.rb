@@ -26,5 +26,15 @@ class ZenginCode::Bank
     @branches = {}
     self.class[code] = self
   end
-  attr_reader :code, :name, :kana, :hira, :roma, :branches
+
+  def branches
+    ZenginCode.load_branch(self) if @branches.blank?
+    @branches
+  end
+
+  def set_branch(branch)
+    @branches[branch.code] = branch
+  end
+
+  attr_reader :code, :name, :kana, :hira, :roma
 end
