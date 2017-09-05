@@ -28,11 +28,11 @@ class ZenginCode::Bank
   end
 
   def branches
-    ZenginCode.load_branch(self) if @branches.blank?
+    ZenginCode.load_branches(self) if @branches.blank?
     @branches
   end
 
-  def set_branch(branch)
+  def branch(branch)
     @branches[branch.code] = branch
   end
 
